@@ -11,7 +11,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-xl font-black text-white tracking-tighter">
-            ORCHIDS <span className="text-cyan-400">GLOBAL</span>
+            SMA <span className="text-cyan-400">GROUB</span>
           </div>
           <div className="hidden md:flex gap-8 text-slate-300 font-medium">
             <a href="#" className="hover:text-white transition-colors">Services</a>
