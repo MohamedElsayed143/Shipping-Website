@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Lock, Eye, EyeOff, ArrowRight, Loader2, Truck, Phone, CheckCircle2, XCircle, User } from "lucide-react";
+import { Lock, Eye, EyeOff, ArrowRight, Loader2, Truck, Phone, CheckCircle2, XCircle, User, Circle } from "lucide-react";
 import { signIn } from "next-auth/react";
-import { registerUser } from "@/lib/actions"; // استيراد الأكشن الحقيقي
+import { registerUser } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 
 type AuthMode = "login" | "signup";
@@ -136,6 +136,29 @@ function validatePassword(password: string): { valid: boolean; error?: string } 
   return { valid: true };
 }
 
+// --- Inline Validation Hint Row ---
+function ValidationHintRow({ satisfied, label }: { satisfied: boolean; label: string }) {
+  return (
+    <div
+      className="flex items-center gap-2 transition-all duration-300"
+      style={{ opacity: 1 }}
+    >
+      {satisfied ? (
+        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 transition-colors duration-300" />
+      ) : (
+        <Circle className="w-3.5 h-3.5 text-white/25 transition-colors duration-300" />
+      )}
+      <span
+        className={`text-xs transition-colors duration-300 ${
+          satisfied ? "text-emerald-400" : "text-white/35"
+        }`}
+      >
+        {label}
+      </span>
+    </div>
+  );
+}
+
 // --- Main Page Component ---
 
 export default function AuthPage() {
@@ -157,10 +180,21 @@ export default function AuthPage() {
     password: ""
   });
 
+  // --- Real-time hint states (signup only) ---
+  const phoneHints = {
+    startsWithZeroOne: formData.phone.startsWith("01"),
+    isEleven: formData.phone.length === 11,
+  };
+  const passwordHints = {
+    minEight: formData.password.length >= 8,
+    hasUppercase: /[A-Z]/.test(formData.password),
+    hasNumber: /[0-9]/.test(formData.password),
+    hasSpecial: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(formData.password),
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
-    // للموبايل: نمنع أي حرف غير رقم ونحدد بـ 11 رقم
     if (name === "phone") {
       const numericValue = value.replace(/\D/g, "").slice(0, 11);
       setFormData(prev => ({ ...prev, [name]: numericValue }));
@@ -178,32 +212,32 @@ export default function AuthPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // التحقق من صحة البيانات
     if (mode === "signup" && !formData.name.trim()) {
       setErrors(prev => ({ ...prev, name: "Full name is required" }));
       setToast({ message: "Full name is required", type: "error" });
       return;
     }
 
-    const phoneValidation = validatePhone(formData.phone);
-    const passwordValidation = validatePassword(formData.password);
+    if (mode === "signup") {
+      const phoneValidation = validatePhone(formData.phone);
+      const passwordValidation = validatePassword(formData.password);
 
-    if (!phoneValidation.valid) {
-      setErrors(prev => ({ ...prev, phone: phoneValidation.error || "" }));
-      setToast({ message: phoneValidation.error || "Invalid phone number", type: "error" });
-      return;
-    }
+      if (!phoneValidation.valid) {
+        setErrors(prev => ({ ...prev, phone: phoneValidation.error || "" }));
+        setToast({ message: phoneValidation.error || "Invalid phone number", type: "error" });
+        return;
+      }
 
-    if (!passwordValidation.valid) {
-      setErrors(prev => ({ ...prev, password: passwordValidation.error || "" }));
-      setToast({ message: passwordValidation.error || "Invalid password", type: "error" });
-      return;
+      if (!passwordValidation.valid) {
+        setErrors(prev => ({ ...prev, password: passwordValidation.error || "" }));
+        setToast({ message: passwordValidation.error || "Invalid password", type: "error" });
+        return;
+      }
     }
 
     setIsLoading(true);
 
     if (mode === "login") {
-      // منطق تسجيل الدخول
       const res = await signIn("credentials", {
         phone: formData.phone,
         password: formData.password,
@@ -211,7 +245,7 @@ export default function AuthPage() {
       });
 
       if (res?.error) {
-        setToast({ message: "Invalid phone number or password", type: "error" });
+        setToast({ message: "Invalid phone or password", type: "error" });
       } else {
         setToast({ message: "Logged in successfully! Redirecting...", type: "success" });
         setTimeout(() => {
@@ -220,7 +254,6 @@ export default function AuthPage() {
         }, 1500);
       }
     } else {
-      // منطق التسجيل الحقيقي باستخدام الـ Server Action
       const res = await registerUser(formData);
 
       if (res.error) {
@@ -295,11 +328,31 @@ export default function AuthPage() {
                         </button>
                       )}
                     </div>
+
+                    {/* --- Error message (login mode or signup submit fallback) --- */}
                     {errors[field.name] && (
                       <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
                         <XCircle className="w-3 h-3" />
                         {errors[field.name]}
                       </p>
+                    )}
+
+                    {/* --- Live validation hints (signup only, phone field) --- */}
+                    {mode === "signup" && field.name === "phone" && formData.phone.length > 0 && (
+                      <div className="mt-2 flex flex-col gap-1.5 px-1">
+                        <ValidationHintRow satisfied={phoneHints.startsWithZeroOne} label="Must start with 01" />
+                        <ValidationHintRow satisfied={phoneHints.isEleven} label="Must be exactly 11 digits" />
+                      </div>
+                    )}
+
+                    {/* --- Live validation hints (signup only, password field) --- */}
+                    {mode === "signup" && field.name === "password" && formData.password.length > 0 && (
+                      <div className="mt-2 flex flex-col gap-1.5 px-1">
+                        <ValidationHintRow satisfied={passwordHints.minEight} label="At least 8 characters" />
+                        <ValidationHintRow satisfied={passwordHints.hasUppercase} label="At least one uppercase letter" />
+                        <ValidationHintRow satisfied={passwordHints.hasNumber} label="At least one number" />
+                        <ValidationHintRow satisfied={passwordHints.hasSpecial} label="At least one special character (!@#$%…)" />
+                      </div>
                     )}
                   </div>
                 ))}
