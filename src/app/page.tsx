@@ -30,7 +30,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
           <p className="text-slate-400 font-medium animate-pulse">
-            Verifying Session...
+            Loading...
           </p>
         </div>
       </div>

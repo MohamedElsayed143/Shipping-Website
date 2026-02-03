@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Package, MapPin, ArrowRight } from "lucide-react";
+import {
+  Search,
+  Package,
+  MapPin,
+  ArrowRight,
+  MessageCircle,
+} from "lucide-react";
 
 export function Hero() {
   return (
@@ -34,8 +40,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-slate-300 mb-10 max-w-xl"
           >
-            Streamline your supply chain with our world-class logistics solutions. 
-            From air freight to last-mile delivery, we move the world for you.
+            Streamline your supply chain with our world-class logistics
+            solutions. From air freight to last-mile delivery, we move the world
+            for you.
           </motion.p>
 
           <motion.div
@@ -69,35 +76,41 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Decorative Elements */}
-      <motion.div 
-        animate={{ 
-          y: [0, -20, 0],
-          rotate: [0, 5, 0]
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-10 right-10 hidden lg:block"
+      {/* WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/201029124517"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="absolute bottom-10 right-10 hidden lg:block group"
       >
-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-cyan-500 rounded-2xl flex items-center justify-center">
-              <Package className="text-white" />
-            </div>
-            <div>
-              <p className="text-white font-bold">In Transit</p>
-              <p className="text-slate-400 text-sm">PKG-99283-ID</p>
-            </div>
+        <motion.div
+          whileHover={{ y: -4 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          className="bg-emerald-500/95 backdrop-blur-md hover:bg-emerald-600 
+               text-white px-6 py-4 rounded-2xl shadow-xl 
+               border border-white/10
+               flex items-center gap-3
+               transition-all duration-300"
+        >
+          {/* Icon */}
+          <motion.div
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+            className="w-11 h-11 bg-white/15 rounded-xl flex items-center justify-center"
+          >
+            <MessageCircle className="w-5 h-5" fill="currentColor" />
+          </motion.div>
+
+          {/* Text */}
+          <div className="leading-tight">
+            <p className="font-semibold text-sm">Chat with us</p>
+            <p className="text-xs text-white/80">We’re online</p>
           </div>
-          <div className="w-48 h-2 bg-slate-800 rounded-full overflow-hidden">
-            <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: "70%" }}
-              transition={{ duration: 2, delay: 1 }}
-              className="h-full bg-cyan-500"
-            />
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </motion.a>
     </section>
   );
 }
