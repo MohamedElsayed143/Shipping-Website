@@ -86,12 +86,12 @@ function HeroVisual() {
         <FloatingElement delay={0.2}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8">
             <Truck className="w-4 h-4 text-blue-500" />
-            <span className="text-sm text-white/70">Logistics Reimagined</span>
+            <span className="text-sm text-white/70">Shopping Made Easy</span>
           </div>
         </FloatingElement>
-        <FloatingElement delay={0.3}><h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">FleetSync</h2></FloatingElement>
+        <FloatingElement delay={0.3}><h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">Sma Group</h2></FloatingElement>
         <FloatingElement delay={0.4}>
-          <p className="text-lg text-white/60 mb-8">The intelligent shipping platform that connects your business to the world.</p>
+          <p className="text-lg text-white/60 mb-8">Shop from Trendyol, Zara, and generic Turkish brands. We deliver straight to your doorstep in Egypt.</p>
         </FloatingElement>
         <div className="grid grid-cols-3 gap-4">
           {stats.map((stat, i) => (
@@ -293,7 +293,7 @@ export default function AuthPage() {
                   {mode === "login" ? "Welcome back" : "Create account"}
                 </h2>
                 <p className="text-white/40 text-sm">
-                  {mode === "login" ? "Sign in with your phone number" : "Join FleetSync fleet today"}
+                  {mode === "login" ? "Sign in with your phone number" : "Join Sma Group today"}
                 </p>
               </div>
 
