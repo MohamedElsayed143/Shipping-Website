@@ -31,7 +31,7 @@ export function Hero() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
           >
             Fast & Reliable <br />
-            <span className="text-cyan-400">Global Shipping</span>
+            <span className="text-cyan-400">Shipping from Turkey</span>
           </motion.h1>
 
           <motion.p
@@ -40,9 +40,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-slate-300 mb-10 max-w-xl"
           >
-            Streamline your supply chain with our world-class logistics
-            solutions. From air freight to last-mile delivery, we move the world
-            for you.
+            We handle everything from Turkish stores to your doorstep in Egypt. Enjoy seamless shopping with transparent pricing and express delivery.
           </motion.p>
 
           <motion.div

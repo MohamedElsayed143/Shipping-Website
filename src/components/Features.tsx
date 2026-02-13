@@ -1,42 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plane, Ship, Truck, Globe, Shield, Clock } from "lucide-react";
+import { Plane, Handbag, PackageCheck, Boxes, Shield, Clock } from "lucide-react";
 
 const services = [
   {
-    title: "Air Freight",
-    description: "Fastest delivery options for your urgent international shipments.",
+    title: "Shop & Ship",
+    description: "Get your own Turkish address. Shop from any store, send it to us, and we ship it to Egypt.",
     icon: Plane,
     color: "bg-blue-500",
   },
   {
-    title: "Ocean Cargo",
-    description: "Cost-effective shipping for large-scale global transportation.",
-    icon: Ship,
+    title: "Buy For Me",
+    description: "Can't pay with your card? Send us the product link, and we will buy it for you.",
+    icon: Handbag,
     color: "bg-cyan-500",
   },
   {
-    title: "Last-Mile Delivery",
-    description: "Precise and reliable delivery right to your customer's doorstep.",
-    icon: Truck,
+    title: "Doorstep Delivery",
+    description: "From Istanbul to your home in Cairo. Fast, tracked, and secure delivery.",
+    icon: PackageCheck,
     color: "bg-orange-500",
   },
   {
-    title: "Global Warehousing",
-    description: "Strategic storage solutions in key global trade hubs.",
-    icon: Globe,
+    title: "Order Consolidation",
+    description: "Shop from multiple stores. We combine all your orders into one package to save you up to 80% on shipping fees.",
+    icon: Boxes,
     color: "bg-indigo-500",
   },
   {
     title: "Secure Handling",
-    description: "Advanced tracking and security for high-value cargo.",
+    description: "Advanced tracking and security for high-value items.",
     icon: Shield,
     color: "bg-emerald-500",
   },
   {
-    title: "Express Shipping",
-    description: "Next-day delivery services for time-sensitive packages.",
+    title: "Fast Delivery",
+    description: "Receive your order in just 7-10 days. We handle all customs procedures so you don't have to wait.",
     icon: Clock,
     color: "bg-rose-500",
   },
@@ -48,11 +48,10 @@ export function Features() {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            Our Premium Logistics Services
+            Shopping from Turkey Made Easy
           </h2>
           <p className="text-slate-600 text-lg">
-            We provide comprehensive shipping solutions tailored to your business needs, 
-            ensuring your goods reach their destination safely and on time.
+            We handle the shipping, customs, and delivery. You just enjoy the shopping.
           </p>
         </div>
 

@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { label: "Countries Covered", value: "190+", suffix: "" },
-  { label: "Packages Delivered", value: "25", suffix: "M+" },
-  { label: "Happy Clients", value: "500", suffix: "K+" },
-  { label: "Global Warehouses", value: "120", suffix: "+" },
+  { label: "Years of Experience", value: "10", suffix: "+" },
+  { label: "Packages Delivered", value: "100", suffix: "K+" },
+  { label: "Happy Clients", value: "1200", suffix: "+" },
+  { label: "Brands Supported", value: "100", suffix: "+" },
 ];
 
 export function Stats() {
