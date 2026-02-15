@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
-  Search,
   Package,
-  MapPin,
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
@@ -43,6 +41,7 @@ export function Hero() {
             We handle everything from Turkish stores to your doorstep in Egypt. Enjoy seamless shopping with transparent pricing and express delivery.
           </motion.p>
 
+          {/* Search Box*/}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -54,18 +53,10 @@ export function Hero() {
               <input
                 type="text"
                 placeholder="Enter Tracking Number..."
-                className="w-full bg-transparent border-none focus:ring-0 text-slate-900 placeholder:text-slate-400 font-medium"
+                className="w-full bg-transparent border-none focus:ring-0 text-slate-900 placeholder:text-slate-400 font-medium outline-none"
               />
             </div>
-            <div className="h-8 w-[1px] bg-slate-200 hidden md:block" />
-            <div className="flex-1 flex items-center gap-3 px-4 py-2 w-full">
-              <MapPin className="text-slate-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Destination"
-                className="w-full bg-transparent border-none focus:ring-0 text-slate-900 placeholder:text-slate-400 font-medium"
-              />
-            </div>
+            
             <button className="w-full md:w-auto bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group">
               Track Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -74,15 +65,15 @@ export function Hero() {
         </div>
       </div>
 
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button*/}
       <motion.a
-        href="https://wa.me/201029124517"
+        href="https://wa.me/905455723799"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute bottom-10 right-10 hidden lg:block group"
+        className="fixed bottom-6 right-6 z-50 hidden lg:block group"
       >
         <motion.div
           whileHover={{ y: -4 }}

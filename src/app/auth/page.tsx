@@ -24,9 +24,9 @@ const authFields: FormField[] = [
 ];
 
 const stats = [
-  { value: "99.9%", label: "Delivery Rate" },
-  { value: "150+", label: "Countries" },
-  { value: "50M+", label: "Shipments" },
+  { value: "Door to Door", label: "Delivery" },
+  { value: "Turkey to Egypt", label: "Direct Route" },
+  { value: "Weekly", label: "Flights" },
 ];
 
 // --- Toast Notification Component ---

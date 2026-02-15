@@ -5,18 +5,18 @@ import { ClipboardCheck, PackageCheck, Truck } from "lucide-react";
 
 const steps = [
   {
-    title: "Book Your Shipment",
-    description: "Use our easy online platform to quote and book your shipment in minutes.",
+    title: "Get Your Turkish Address",
+    description: "Sign up to receive your unique suite ID and warehouse address in Istanbul immediately.",
     icon: ClipboardCheck,
   },
   {
-    title: "Cargo Pickup",
-    description: "Our team collects your package from your doorstep or warehouse.",
+    title: "Shop Online",
+    description: "Shop from Trendyol, Zara, or any Turkish store and use your new address at checkout.",
     icon: PackageCheck,
   },
   {
-    title: "Real-time Tracking",
-    description: "Monitor your shipment's journey across the globe with live updates.",
+    title: "We Deliver to Egypt",
+    description: "We receive your packages, handle shipping & customs, and deliver to your doorstep.",
     icon: Truck,
   },
 ];
@@ -26,9 +26,9 @@ export function HowItWorks() {
     <section className="py-24 bg-slate-50">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">How It Works</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">Start Shopping in 3 Steps</h2>
           <p className="text-slate-600 text-lg">
-            A simple three-step process to get your goods moving globally.
+          Your gateway to Turkish brands. Simple, fast, and reliable.
           </p>
         </div>
 
